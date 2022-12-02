@@ -120,18 +120,15 @@ def pregunta_04():
     (X_train, X_test, y_train, y_test,) = train_test_split(
         X_fertility,
         y_life,
-        test_size = 0.20,
+        test_size = 0.30,
         random_state = 53,
     )
     # Cree una instancia del modelo de regresión lineal
     linearRegression = LinearRegression()
-
     # Entrene el clasificador usando X_train y y_train
     linearRegression.fit(X_train.values.reshape(-1, 1), y_train.values.reshape(-1, 1))
-
     # Pronostique y_test usando X_test
     y_pred = linearRegression.predict(X_test.values.reshape(-1, 1))
-
     # Compute and print R^2 and RMSE
     print("R^2: {:6.4f}".format(linearRegression.score(X_test.values.reshape(-1, 1),
         y_test.values.reshape(-1, 1))))
